@@ -303,16 +303,29 @@
         </div>
     </section>
 
-<iframe src="main-circle.html" style="width:100%; border:none;"></iframe>
-
+ <div id="main-circle-wrapper"></div>
+  
   <section class="section bg-light">
-       <img src="Assets/Software.jpg" alt="Skills" class="img-fluid">
+   <img src="Assets/Software.jpg" alt="Skills" class="img-fluid">
   </section>
 
   <section class="p-0">
    <img src="Assets/Feature.png" alt="Skills" class="img-fluid">
   </section>
- 
+
+  <script>
+  fetch('main-circle.html')
+    .then(response => {
+      if (!response.ok) throw new Error('Failed to load main-circle.html');
+      return response.text();
+    })
+    .then(html => {
+      document.getElementById('main-circle-wrapper').innerHTML = html;
+      AOS.refresh(); // important if animations exist
+    })
+    .catch(err => console.error(err));
+</script>
+
   <script>
         // Typewriter Animation 
       var TxtType = function(el, toRotate, period) {
