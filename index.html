@@ -289,7 +289,132 @@
   opacity: 1;
   transform: translateY(0);
 }
-    
+/* ===============================
+   SELECTED WORK SECTION
+================================= */
+
+.work-section {
+  padding: 120px 20px;
+  background: #f3efe8;
+}
+
+.work-container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.work-header {
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.work-badge {
+  display: inline-block;
+  border: 1px solid #ccc;
+  padding: 6px 16px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  border-radius: 20px;
+  margin-bottom: 25px;
+}
+
+.work-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 56px;
+  font-weight: 500;
+}
+
+/* PROJECT ITEM */
+.work-item {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 60px;
+  align-items: center;
+  margin-bottom: 120px;
+}
+
+.work-item.reverse {
+  grid-template-columns: 1.2fr 1fr;
+}
+
+.work-item.reverse .work-info {
+  order: 2;
+}
+
+.work-item.reverse .work-image {
+  order: 1;
+}
+
+/* TEXT */
+.work-info h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.work-tags {
+  display: flex;
+  gap: 20px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  opacity: 0.7;
+}
+
+.work-info p {
+  max-width: 420px;
+  line-height: 1.7;
+  margin-bottom: 25px;
+}
+
+.work-link {
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px solid #222;
+  padding-bottom: 3px;
+  transition: 0.3s ease;
+}
+
+.work-link:hover {
+  opacity: 0.6;
+}
+
+/* IMAGE */
+.work-image {
+  overflow: hidden;
+  border-radius: 24px;
+}
+
+.work-image img {
+  width: 100%;
+  display: block;
+  transition: transform 1.5s ease;
+}
+
+.work-item:hover .work-image img {
+  transform: scale(1.05);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .work-item,
+  .work-item.reverse {
+    grid-template-columns: 1fr;
+  }
+
+  .work-info {
+    order: 2 !important;
+  }
+
+  .work-image {
+    order: 1 !important;
+  }
+
+  .work-title {
+    font-size: 42px;
+  }
+}  
   </style>
 </head>
 <body>
@@ -359,9 +484,76 @@
     </div>
   </div>
 </section>
+<section class="work-section">
+  <div class="work-container">
+
+    <div class="work-header">
+      <div class="work-badge">SELECTED WORK</div>
+      <h2 class="work-title">A glimpse of recent projects</h2>
+    </div>
+
+    <!-- PROJECT 1 -->
+    <div class="work-item">
+      <div class="work-info">
+        <h3>Luxury Skincare Brand</h3>
+        <div class="work-tags">
+          <span>Branding</span>
+          <span>Web Design</span>
+          <span>Strategy</span>
+        </div>
+        <p>
+          A refined digital experience crafted for a modern skincare brand focused on elegance and clarity.
+        </p>
+        <a href="#" class="work-link">View Project →</a>
+      </div>
+
+      <div class="work-image">
+        <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1600&auto=format&fit=crop" alt="Project">
+      </div>
+    </div>
+
+    <!-- PROJECT 2 -->
+    <div class="work-item reverse">
+      <div class="work-info">
+        <h3>Creative Portfolio Studio</h3>
+        <div class="work-tags">
+          <span>UX/UI</span>
+          <span>Development</span>
+        </div>
+        <p>
+          A minimal yet bold portfolio experience designed to showcase work with clarity and impact.
+        </p>
+        <a href="#" class="work-link">View Project →</a>
+      </div>
+
+      <div class="work-image">
+        <img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?q=80&w=1600&auto=format&fit=crop" alt="Project">
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const workSection = document.querySelector('.work-section');
   
-  <script>
-  // HERO reveal on load
+  const workObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        workSection.style.opacity = "1";
+        workSection.style.transform = "translateY(0)";
+      }
+    });
+  }, { threshold: 0.2 });
+  
+  workSection.style.opacity = "0";
+  workSection.style.transform = "translateY(60px)";
+  workSection.style.transition = "all 1s cubic-bezier(.16,1,.3,1)";
+  
+  workObserver.observe(workSection);
+</script>
+  
+<script>
   window.addEventListener('load', () => {
     document.getElementById('hero').classList.add('show');
   });
@@ -382,8 +574,7 @@
   observer.observe(whySection);
 </script>
 
-  <script>
-    // Reveal animation on load
+<script>
     window.addEventListener('load', () => {
       document.getElementById('hero').classList.add('show');
     });
