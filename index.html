@@ -415,6 +415,85 @@
     font-size: 42px;
   }
 }  
+/* ============================
+   LOGO MARQUEE SECTION
+=============================== */
+
+.logo-marquee-section {
+  background: #eae7e2;
+  padding: 100px 20px;
+  border-radius: 32px;
+  margin: 80px auto;
+  max-width: 1400px;
+}
+
+.logo-marquee-container {
+  text-align: center;
+}
+
+.logo-heading {
+  font-size: 22px;
+  margin-bottom: 60px;
+  font-weight: 400;
+}
+
+/* MARQUEE */
+.logo-marquee {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.logo-track {
+  display: flex;
+  gap: 100px;
+  width: max-content;
+  animation: scroll 30s linear infinite;
+}
+
+.logo-track img {
+  height: 60px;
+  object-fit: contain;
+  opacity: 0.6;
+  filter: grayscale(100%);
+  transition: 0.3s ease;
+}
+
+.logo-track img:hover {
+  opacity: 1;
+  filter: grayscale(0%);
+}
+
+/* Animation */
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Pause on hover */
+.logo-marquee:hover .logo-track {
+  animation-play-state: paused;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .logo-track {
+    gap: 60px;
+    animation-duration: 20s;
+  }
+
+  .logo-track img {
+    height: 45px;
+  }
+
+  .logo-heading {
+    font-size: 18px;
+  }
+}
   </style>
 </head>
 <body>
@@ -528,6 +607,36 @@
 
       <div class="work-image">
         <img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?q=80&w=1600&auto=format&fit=crop" alt="Project">
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="logo-marquee-section">
+  <div class="logo-marquee-container">
+
+    <p class="logo-heading">
+      We have worked with a wide range of clients and organizations, including:
+    </p>
+
+    <div class="logo-marquee">
+      <div class="logo-track">
+
+        <!-- Logos (Repeat Twice for Seamless Loop) -->
+        <img src="./Assets/evermore.png" alt="evermore">
+        <img src="./Assets/paudha.png" alt="paudha">
+        <img src="./Assets/skoots.png" alt="skoots">
+        <img src="./Assets/troost.png" alt="troost">
+        <img src="./Assets/b&s.png" alt="b&s">
+
+        <!-- Duplicate -->
+        <img src="./Assets/evermore.png" alt="evermore">
+        <img src="./Assets/paudha.png" alt="paudha">
+        <img src="./Assets/skoots.png" alt="skoots">
+        <img src="./Assets/troost.png" alt="troost">
+        <img src="./Assets/b&s.png" alt="b&s">
+
       </div>
     </div>
 
